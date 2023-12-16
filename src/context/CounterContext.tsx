@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext, ReactNode } from "react";
+import { createContext, useReducer, useContext, ReactNode, FC } from "react";
 
 // TypeScript types
 type AppState = {
@@ -37,9 +37,7 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 };
 
 // Context provider component
-export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   return (
