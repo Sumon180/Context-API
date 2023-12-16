@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppContext } from "../context/CounterContext";
+import { useCounterContext } from "../context/CounterContext";
 
 const Counter: React.FC = () => {
   const { state, dispatch } = useCounterContext();

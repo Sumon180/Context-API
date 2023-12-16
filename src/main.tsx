@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { AppProvider } from "./context/CounterContext.tsx";
+import { CounterProvider } from "./context/CounterContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AppProvider>
+    <CounterProvider>
       <App />
-    </AppProvider>
+    </CounterProvider>
   </React.StrictMode>
 );

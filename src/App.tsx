@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Counter from "./components/Counter";
-import { useAppContext } from "./context/CounterContext";
+import { useCounterContext } from "./context/CounterContext";
 
 const App: React.FC = () => {
   const { state } = useCounterContext();
