@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Counter from "./Components/Counter";
+import Counter from "./components/Counter";
 import { useAppContext } from "./context/CounterContext";
 
 const App: React.FC = () => {
-  const { state } = useAppContext();
+  const { state } = useCounterContext();
 
   useEffect(() => {
     document.title = `Count: ${state.count}`;

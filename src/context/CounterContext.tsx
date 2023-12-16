@@ -1,29 +1,29 @@
 import { createContext, useReducer, useContext, ReactNode, FC } from "react";
 
 // TypeScript types
-type AppState = {
+type CounterState = {
   count: number;
 };
 
-type AppAction =
+type CounterAction =
   | { type: "INCREASE" }
   | { type: "DECREASE" }
   | { type: "RESET" };
 
-type AppDispatch = (action: AppAction) => void;
+type CounterDispatch = (action: CounterAction) => void;
 
 // Initial state
-const initialState: AppState = {
+const initialState: CounterState = {
   count: 0,
 };
 
 // Context for state and dispatch
-const AppContext = createContext<
-  { state: AppState; dispatch: AppDispatch } | undefined
+const CounterContext = createContext<
+  { state: CounterState; dispatch: CounterDispatch } | undefined
 >(undefined);
 
 // Reducer function
-const appReducer = (state: AppState, action: AppAction): AppState => {
+const counterReducer = (state: CounterState, action: CounterAction): CounterState => {
   switch (action.type) {
     case "INCREASE":
       return { ...state, count: state.count + 1 };
@@ -37,21 +37,21 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
 };
 
 // Context provider component
-export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+export const CounterProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [state, dispatch] = useReducer(counterReducer, initialState);
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <CounterContext.Provider value={{ state, dispatch }}>
       {children}
-    </AppContext.Provider>
+    </CounterContext.Provider>
   );
 };
 
 // Custom hook for using the context
-export const useAppContext = () => {
-  const context = useContext(AppContext);
+export const useCounterContext = () => {
+  const context = useContext(CounterContext);
   if (!context) {
-    throw new Error("useAppContext must be used within an AppProvider");
+    throw new Error("useCounterContext must be used within an CounterProvider");
   }
   return context;
 };

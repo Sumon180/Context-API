@@ -2,7 +2,7 @@ import React from "react";
 import { useAppContext } from "../context/CounterContext";
 
 const Counter: React.FC = () => {
-  const { state, dispatch } = useAppContext();
+  const { state, dispatch } = useCounterContext();
 
   const handleIncrease = () => {
     dispatch({ type: "INCREASE" });
